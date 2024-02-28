@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Epilogue } from "next/font/google";
 import "./globals.css";
+import { ConvexClinetProvider } from "@/providers/convex-client-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Epilogue({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head><link rel="shortcut icon" href="/images/logo.svg" type="image/x-icon" /></head>
+      <body className={inter.className}>
+        <ConvexClinetProvider>
+          {children}
+        </ConvexClinetProvider>
+      </body>
     </html>
   );
 }
